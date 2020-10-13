@@ -16754,6 +16754,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['watchedEpisodes', 'episodes'],
   data: function data() {
@@ -16849,6 +16851,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _ProgressButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProgressButton */ "./resources/js/Pages/Courses/ProgressButton.vue");
 /* harmony import */ var _ProgressBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProgressBar */ "./resources/js/Pages/Courses/ProgressBar.vue");
+/* harmony import */ var _Index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Index */ "./resources/js/Pages/Courses/Index.vue");
 //
 //
 //
@@ -16906,6 +16909,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -16913,7 +16918,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
     ProgressButton: _ProgressButton__WEBPACK_IMPORTED_MODULE_1__["default"],
-    ProgressBar: _ProgressBar__WEBPACK_IMPORTED_MODULE_2__["default"]
+    ProgressBar: _ProgressBar__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Index: _Index__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   methods: {
     switchEpisode: function switchEpisode(index) {
@@ -16928,7 +16934,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['course', 'watched', 'courses'],
   data: function data() {
     return {
-      coursesShow: this.courses,
+      coursesList: this.courses,
       currentKey: 0
     };
   },
@@ -40681,50 +40687,85 @@ var render = function() {
           "a",
           {
             staticClass:
-              "rounded-full bg-gray-500 inline-block text-2xl leading-6 w-6 h-6 text-center text-white",
+              "rounded-full bg-gray-300 inline-block text-2xl leading-6 w-10 h-10 mx-px text-center text-white",
             attrs: { href: "" }
           },
-          [_c("font-awesome-icon", { attrs: { icon: "home" } })],
+          [
+            _c("font-awesome-icon", {
+              staticClass: "m-auto h-10",
+              attrs: { icon: "home" }
+            })
+          ],
           1
         )
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "bg-gray-200 w-full rounded shadow table-fixed" },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "bg-green-500 text-white rounded-l text-center transition-width duration-500",
-              style: "width:" + _vm.percentage + "%"
-            },
-            [
-              _vm.percentage == 0
-                ? _c("span", { staticClass: "text-gray-200" }, [_vm._v("0")])
-                : _vm._e(),
-              _vm.percentage > 0 && _vm.percentage < 100
-                ? _c("span", [_vm._v(_vm._s(_vm.percentage) + "%")])
-                : _vm._e(),
-              _vm.percentage == 100 ? _c("span", [_vm._v("Success")]) : _vm._e()
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("span", { staticClass: "table-cell align-top w-0.5" }, [
+      _c("div", { staticClass: "flex h-10 mx-px" }, [
         _c(
-          "a",
+          "div",
           {
             staticClass:
-              "rounded-full bg-gray-500 inline-block text-2xl leading-6 w-6 h-6 text-center text-white",
-            attrs: { href: "" }
+              "bg-gray-200 w-full m-auto rounded shadow table-fixed align-middle"
           },
-          [_c("font-awesome-icon", { attrs: { icon: "trophy" } })],
-          1
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "bg-green-500 text-white rounded-l text-center transition-width duration-500",
+                style: "width:" + _vm.percentage + "%"
+              },
+              [
+                _vm.percentage == 0
+                  ? _c("span", { staticClass: "text-gray-200" }, [_vm._v("0")])
+                  : _vm._e(),
+                _vm.percentage > 0 && _vm.percentage < 100
+                  ? _c("span", [_vm._v(_vm._s(_vm.percentage) + "%")])
+                  : _vm._e(),
+                _vm.percentage == 100
+                  ? _c("span", [_vm._v("Success")])
+                  : _vm._e()
+              ]
+            )
+          ]
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _vm.percentage == 100
+        ? _c("span", { staticClass: "table-cell align-top w-0.5" }, [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "rounded-full bg-green-500 inline-block text-2xl leading-6 w-10 h-10 mx-px text-center text-white",
+                attrs: { href: "" }
+              },
+              [
+                _c("font-awesome-icon", {
+                  staticClass: "m-auto h-10",
+                  attrs: { icon: "trophy" }
+                })
+              ],
+              1
+            )
+          ])
+        : _c("span", { staticClass: "table-cell align-top w-0.5" }, [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "rounded-full bg-gray-300 inline-block text-2xl leading-6 w-10 h-10 mx-px text-center text-white",
+                attrs: { href: "" }
+              },
+              [
+                _c("font-awesome-icon", {
+                  staticClass: "m-auto h-10",
+                  attrs: { icon: "trophy" }
+                })
+              ],
+              1
+            )
+          ])
     ])
   ])
 }
@@ -40846,117 +40887,134 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "mx-auto my-5 w-3/4" }, [
-      _c("div", { staticClass: "text-right text-gray-800 text-sm" }, [
-        _vm._v(
-          "Mis à jour le " +
-            _vm._s(_vm.course.episodes[this.currentKey].updated_at)
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "py-6" },
-        [
-          _c("progress-bar", {
-            attrs: {
-              "watched-episodes": _vm.watched,
-              episodes: _vm.course.episodes
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex justify-between w-full mt-4" }, [
-        _c("div", { staticClass: "w-3/4 h-96 bg-black mt-6" }),
+    _c(
+      "div",
+      { staticClass: "mx-auto my-5 w-3/4" },
+      [
+        _c("div", { staticClass: "text-right text-gray-800 text-sm" }, [
+          _vm._v(
+            "Mis à jour le " +
+              _vm._s(_vm.course.episodes[this.currentKey].updated_at)
+          )
+        ]),
         _vm._v(" "),
         _c(
           "div",
-          {
-            staticClass:
-              "w-1/5 h-2/4 py-5 bg-gray-200 shadow-lg rounded flex flex-col text-center"
-          },
+          { staticClass: "py-6" },
           [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "m-auto text-center px-2 py-2 shadow-outline text-indigo-400 rounded",
-                attrs: { href: "" }
-              },
-              [_vm._v("Acceder au forum")]
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "text-center text-2xl my-3 font-extrabold" },
-              [_vm._v("Créé par")]
-            ),
-            _vm._v(" "),
-            _c("img", {
+            _c("progress-bar", {
+              attrs: {
+                "watched-episodes": _vm.watched,
+                episodes: _vm.course.episodes
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex justify-between w-full mt-4" }, [
+          _c("div", { staticClass: "w-3/4 h-96 bg-black mt-6" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
               staticClass:
-                "w-20 h-20 text-center rounded-full m-auto mt-4 my-3",
-              attrs: { src: _vm.$page.user.profile_photo_url }
-            }),
-            _vm._v(" "),
-            _c("p", { staticClass: "my-3" }, [
-              _vm._v(_vm._s(_vm.$page.user.name))
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-gray-500 my-7 font-semibold" }, [
-        _vm._v(_vm._s(_vm.course.episodes[this.currentKey].description))
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "mt-6" },
-        _vm._l(this.course.episodes, function(episode, index) {
-          return _c("ul", { key: episode.id }, [
-            _c(
-              "li",
-              { staticClass: "mt-3 flex justify-between items-center" },
-              [
-                _c("div", [
-                  _vm._v(
-                    "\n                        Épisode n°" +
-                      _vm._s(index + 1) +
-                      " : " +
-                      _vm._s(episode.title) +
-                      "\n                        "
-                  ),
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "text-gray-400 focus:text-indigo-400 focus:outline-none",
-                      on: {
-                        click: function($event) {
-                          return _vm.switchEpisode(index)
-                        }
-                      }
-                    },
-                    [_vm._v("Voir l'épisode")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("progress-button", {
-                  attrs: {
-                    "episode-id": episode.id,
-                    "watched-episodes": _vm.watched
-                  }
-                })
-              ],
-              1
-            )
-          ])
+                "w-1/5 h-2/4 py-5 bg-gray-200 shadow-lg rounded flex flex-col text-center"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "m-auto text-center px-2 py-2 shadow-outline text-indigo-400 rounded",
+                  attrs: { href: "" }
+                },
+                [_vm._v("Acceder au forum")]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "text-center text-2xl my-3 font-extrabold" },
+                [_vm._v("Créé par")]
+              ),
+              _vm._v(" "),
+              _c("img", {
+                staticClass:
+                  "w-20 h-20 text-center rounded-3xl m-auto mt-4 my-3",
+                attrs: { src: _vm.$page.user.profile_photo_url }
+              }),
+              _vm._v(" "),
+              _c("p", { staticClass: "my-3 text-black text-xl" }, [
+                _vm._v(_vm._s(_vm.$page.user.name))
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-gray-500 my-7 font-semibold" }, [
+          _vm._v(_vm._s(_vm.course.episodes[this.currentKey].description))
+        ]),
+        _vm._v(" "),
+        _vm._l(this.course.episodes, function(episode) {
+          return _c(
+            "div",
+            { key: episode.id },
+            [
+              _c("progress-button", {
+                attrs: {
+                  "episode-id": episode.id,
+                  "watched-episodes": _vm.watched
+                }
+              })
+            ],
+            1
+          )
         }),
-        0
-      )
-    ])
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "mt-6" },
+          _vm._l(this.course.episodes, function(episode, index) {
+            return _c("ul", { key: episode.id }, [
+              _c(
+                "li",
+                { staticClass: "mt-3 flex justify-between items-center" },
+                [
+                  _c("div", [
+                    _vm._v(
+                      "\n                        " + _vm._s(index + 1) + " : "
+                    ),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "text-xl hover:text-indigo-300 focus:text-indigo-400 focus:outline-none",
+                        on: {
+                          click: function($event) {
+                            return _vm.switchEpisode(index)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(episode.title))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("progress-button", {
+                    attrs: {
+                      "episode-id": episode.id,
+                      "watched-episodes": _vm.watched
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          }),
+          0
+        )
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = []

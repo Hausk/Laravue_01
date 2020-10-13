@@ -27,25 +27,26 @@
                 <progress-bar :watched-episodes="watched" :episodes="course.episodes"/>
             </div>
 
-            <div class="flex justify-between w-full mt-4" >
+            <div class="flex justify-between w-full mt-4">
                 <div class="w-3/4 h-96 bg-black mt-6"></div>
                 <div class="w-1/5 h-2/4 py-5 bg-gray-200 shadow-lg rounded flex flex-col text-center">
                     <a href="" class="m-auto text-center px-2 py-2 shadow-outline text-indigo-400 rounded">Acceder au forum</a>
                     <p class="text-center text-2xl my-3 font-extrabold">Créé par</p>
-                    <img class="w-20 h-20 text-center rounded-full m-auto mt-4 my-3" :src="$page.user.profile_photo_url" />
-                    <p class="my-3">{{ $page.user.name }}</p>
+                    <img class="w-20 h-20 text-center rounded-3xl m-auto mt-4 my-3" :src="$page.user.profile_photo_url" />
+                    <p class="my-3 text-black text-xl">{{ $page.user.name }}</p>
                 </div>
 
             </div>
             <div class="text-gray-500 my-7 font-semibold">{{ course.episodes[this.currentKey].description }}</div>
-            
-            
+            <div v-for="episode in this.course.episodes" v-bind:key="episode.id">
+                <progress-button :episode-id="episode.id" :watched-episodes="watched" />
+            </div>
+
             <div class="mt-6">
                 <ul v-for="(episode, index) in this.course.episodes" v-bind:key="episode.id">
                     <li class="mt-3 flex justify-between items-center">
                         <div>
-                            Épisode n°{{ index +1 }} : {{ episode.title }}
-                            <button class="text-gray-400 focus:text-indigo-400 focus:outline-none" @click="switchEpisode(index)">Voir l'épisode</button>
+                            {{ index +1 }} : <button class="text-xl hover:text-indigo-300 focus:text-indigo-400 focus:outline-none" @click="switchEpisode(index)">{{ episode.title }}</button>
                         </div>    
                         <progress-button :episode-id="episode.id" :watched-episodes="watched" />
                     </li>
@@ -60,13 +61,15 @@
 import AppLayout from './../../Layouts/AppLayout';
 import ProgressButton from './ProgressButton';
 import ProgressBar from './ProgressBar';
+import Index from './Index';
 
 export default {
 
     components: {
         AppLayout,
         ProgressButton,
-        ProgressBar
+        ProgressBar,
+        Index
     },
   methods: {
       switchEpisode(index) {
@@ -83,8 +86,8 @@ export default {
         props:['course', 'watched', 'courses'],
     data() {
         return {
-            coursesShow: this.courses,
-            currentKey: 0
+            coursesList: this.courses,
+            currentKey: 0,
         }
     },
 
